@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #1F2133;
+  box-sizing: border-box;
+  color: #fff;
+}
+
+
+/* Menu button */
+.circle {
+  margin: 1.3px;
+}
+
+.bento-menu:hover .circle {
+  background-color: #303253;
+}
+
+.bento-menu.active .circle {
+  background-color: #fff;
+}
+
+.bento-menu.active .circle:not(:nth-child(1)):not(:nth-child(5)):not(:nth-child(9)){
+  opacity: 0;
+}
+
+.bento-menu.active .circle:nth-child(1) {
+  transform: translateX(10.5px);
+}
+
+.bento-menu.active .circle:nth-child(9) {
+  transform: translateX(-10.5px);
+}
