@@ -21,7 +21,7 @@ const HeritageSite = () => {
   const { name } = useParams()
   useEffect(() => {
     imgSrc === undefined || imgSrc === null
-      ? setSearchedImg(fetchImage(title))
+      ? fetchImage(title, setSearchedImg)
       : ''
     window.document.title = 'ETWHS / ' + name
   }, [])
@@ -29,11 +29,13 @@ const HeritageSite = () => {
   return (
     <div className="container mx-auto mb-28">
       <Header />
+
       <img
         className="w-full mx-auto my-8 max-h-[650px] object-cover"
-        src={imgSrc || searchedImg}
-        alt=""
+        src={imgSrc || searchedImg || '../img/no-image.png'}
+        alt={title}
       />
+
       <div className="flex flex-col md:flex-row px-5">
         <div className="w-full md:w-8/12 mr-8">
           <h1 className="text-3xl font-bold mb-7 leading-relaxed">{title}</h1>

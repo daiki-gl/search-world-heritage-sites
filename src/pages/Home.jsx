@@ -41,7 +41,7 @@ const Home = () => {
 
   useEffect(() => {
     const searchWords = randomSite.map((site) => site.fields.name_en)
-    setImages(fetchImages(searchWords))
+    fetchImages(searchWords, setImages)
   }, [randomSite])
 
   return (

@@ -14,16 +14,21 @@ export function removeHTMLTag(arr) {
   return validateItems
 }
 
-export async function fetchImages(searchWords) {
+export async function fetchImages(searchWords, setImage) {
   const promises = searchWords.map((searchWord) => fetchImage(searchWord))
   const imageUrls = await Promise.all(promises)
-  return imageUrls
+  setImage(imageUrls)
 }
 
-export async function fetchImage(searchWord) {
+export async function fetchImage(searchWord, setImage) {
   const encodedSearchWord = encodeURIComponent(searchWord)
   const UNSPLASH_URL = `https://api.unsplash.com/search/photos?query=${encodedSearchWord}&client_id=${UNSPLASH_ACCESS_KEY}`
-  const response = await axios.get(UNSPLASH_URL)
-  const { data } = response
-  return data.results[0].urls.regular
+  try {
+    const response = await axios.get(UNSPLASH_URL)
+    const { data } = response
+    setImage && setImage(data.results[0].urls.regular)
+    return data.results[0].urls.regular
+  } catch (error) {
+    console.error(error)
+  }
 }
