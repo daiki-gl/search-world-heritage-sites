@@ -15,8 +15,6 @@ export const initialSearchResultState = {
 
 // Reducer function
 export function searchReducer(state, action) {
-  //   console.log({ state })
-  //   console.log(action)
   switch (action.type) {
     case COUNTRY:
       return {

@@ -6,10 +6,10 @@ import './index.css'
 import ScrollToTop from './helper/ScrollToTop'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  // <React.StrictMode>
-  <BrowserRouter>
-    <ScrollToTop />
-    <App />
-  </BrowserRouter>
-  // </React.StrictMode>,
+  <React.StrictMode>
+    <BrowserRouter>
+      <ScrollToTop />
+      <App />
+    </BrowserRouter>
+  </React.StrictMode>
 )

@@ -50,7 +50,6 @@ const SearchForm = ({ searchFilters, allHeritage, setFilteredList }) => {
     <div className="min-h-[500px] bg-[url('../img/hero.jpg')] bg-cover">
       <div className="container flex flex-col justify-between mx-auto gap-0 px-5 py-10 md:px-16 md:flex-row md:gap-4  lg:p-24 ">
         <HeroTitle />
-
         <div className="bg-white text-gray-800 py-10 px-8 rounded-xl max-w-lg md:w-7/12">
           {searchFilters ? (
             <Form
