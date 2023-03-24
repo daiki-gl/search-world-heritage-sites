@@ -1,15 +1,13 @@
-import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { Link, useLocation, useParams } from 'react-router-dom'
-import { UNSPLASH_ACCESS_KEY } from '../config'
 import { Header, Map } from '../components'
+import { fetchImage } from '../components/functions'
 
 const HeritageSite = () => {
   const location = useLocation()
 
-  const { siteData, imgSrc } = location.state
+  const { siteData, imgSrc, title } = location.state
   const {
-    name_en: title,
     country_en: country,
     continent_en: continent,
     category,
@@ -22,17 +20,11 @@ const HeritageSite = () => {
 
   const { name } = useParams()
   useEffect(() => {
-    imgSrc === undefined && fetchImage(title)
+    imgSrc === undefined || imgSrc === null
+      ? setSearchedImg(fetchImage(title))
+      : ''
     window.document.title = 'ETWHS / ' + name
-  }, [searchedImg])
-
-  async function fetchImage(searchWord) {
-    const encodedSearchWord = encodeURIComponent(searchWord)
-    const UNSPLASH_URL = `https://api.unsplash.com/search/photos?query=${encodedSearchWord}&client_id=${UNSPLASH_ACCESS_KEY}`
-    const response = await axios.get(UNSPLASH_URL)
-    const { data } = response
-    setSearchedImg(data.results[0].urls.regular)
-  }
+  }, [])
 
   return (
     <div className="container mx-auto mb-28">

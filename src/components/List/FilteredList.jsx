@@ -1,22 +1,9 @@
 import { Link } from 'react-router-dom'
 import { BiWorld } from 'react-icons/bi'
 import { FaMapMarkerAlt } from 'react-icons/fa'
+import { removeHTMLTag } from '../functions'
 
 const FilteredList = ({ filteredList }) => {
-  let validateItems = []
-  function removeHTMLTag(arr) {
-    const regex = /(<([^>]+)>)/gi
-    arr.map((item) => {
-      if (item.fields.name_en.match(regex)) {
-        validateItems.push(item.fields.name_en.replace(regex, ''))
-        return
-      }
-      validateItems.push(item.fields.name_en)
-      return
-    })
-  }
-  removeHTMLTag(filteredList)
-
   return (
     <div className="container mx-auto px-5 mt-16">
       <h2 className="text-3xl font-bold">
@@ -30,13 +17,16 @@ const FilteredList = ({ filteredList }) => {
             className="mb-5 hover:-translate-y-1.5 duration-300"
           >
             <Link
-              to={`heritageSite/${validateItems[index]}`}
-              state={{ siteData: filteredItem.fields }}
+              to={`heritageSite/${removeHTMLTag(filteredList)[index]}`}
+              state={{
+                siteData: filteredItem.fields,
+                title: removeHTMLTag(filteredList)[index],
+              }}
               className="hover:opacity-80 duration-200"
             >
               <div className="bg-accentColor p-2 font-semibold">
                 <BiWorld className="mr-2 inline-block" />
-                {validateItems[index]}
+                {removeHTMLTag(filteredList)[index]}
               </div>
               <div className="bg-secondaryColor p-2">
                 <FaMapMarkerAlt className="mr-2 inline-block" />

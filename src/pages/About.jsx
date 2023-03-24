@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Header } from '../components/index'
+import { Header } from '../components'
 
 const About = () => {
   useEffect(() => {

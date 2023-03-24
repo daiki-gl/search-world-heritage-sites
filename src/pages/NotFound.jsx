@@ -1,4 +1,4 @@
-import { Header } from '../components/index'
+import { Header } from '../components'
 
 const NotFound = () => {
   return (

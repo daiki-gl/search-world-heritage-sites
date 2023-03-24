@@ -1,8 +1,5 @@
-import React from 'react'
-
-const SiteListContents = ({ data }) => {
+const SiteListContents = ({ data, name }) => {
   const {
-    name_en: name,
     country_en: country,
     continent_en: continent,
     short_description_en: description,
