@@ -12,6 +12,8 @@ const Home = () => {
   const [filteredList, setFilteredList] = useState(null)
   const [images, setImages] = useState([])
 
+  const [isLoading, setIsLoading] = useState(false)
+
   useEffect(() => {
     fetchData(WORLD_HERITAGE_SITES_URL)
     window.document.title = 'Explore The World Heritage Site'
@@ -41,7 +43,7 @@ const Home = () => {
 
   useEffect(() => {
     const searchWords = randomSite.map((site) => site.fields.name_en)
-    fetchImages(searchWords, setImages)
+    fetchImages(searchWords, setImages, setIsLoading)
   }, [randomSite])
 
   return (
@@ -52,7 +54,7 @@ const Home = () => {
         setFilteredList={setFilteredList}
         searchFilters={allHeritage.facet_groups}
       />
-      <SitesList siteData={randomSite} imgSrces={images} />
+      {isLoading && <SitesList siteData={randomSite} imgSrces={images} />}
       {filteredList && <FilteredList filteredList={filteredList} />}
     </div>
   )

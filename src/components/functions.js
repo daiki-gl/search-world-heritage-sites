@@ -14,10 +14,11 @@ export function removeHTMLTag(arr) {
   return validateItems
 }
 
-export async function fetchImages(searchWords, setImage) {
+export async function fetchImages(searchWords, setImage, loading) {
   const promises = searchWords.map((searchWord) => fetchImage(searchWord))
   const imageUrls = await Promise.all(promises)
   setImage(imageUrls)
+  loading(true)
 }
 
 export async function fetchImage(searchWord, setImage) {
@@ -26,6 +27,7 @@ export async function fetchImage(searchWord, setImage) {
   try {
     const response = await axios.get(UNSPLASH_URL)
     const { data } = response
+    console.log({ data })
     setImage && setImage(data.results[0].urls.regular)
     return data.results[0].urls.regular
   } catch (error) {

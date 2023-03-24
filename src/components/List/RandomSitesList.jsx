@@ -18,13 +18,11 @@ const SitesList = ({ siteData, imgSrces }) => {
               title: removeHTMLTag(siteData)[index],
             }}
           >
-            {
-              <img
-                className="max-h-72 min-h-[250px] object-cover w-full object-center md:max-h-52 rounded-t-xl"
-                src={imgSrces[index] ? imgSrces[index] : '../img/no-image.png'}
-                alt={data.fields.name_en}
-              />
-            }
+            <img
+              className="max-h-72 min-h-[250px] object-cover w-full object-center md:max-h-52 rounded-t-xl"
+              src={imgSrces ? imgSrces[index] : '../img/no-image.png'}
+              alt={data.fields.name_en}
+            />
 
             <SiteListContents
               data={data.fields}
