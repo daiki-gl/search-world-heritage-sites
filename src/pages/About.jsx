@@ -25,6 +25,36 @@ const About = () => {
           api, also the image is fetched from Unsplash api. <br />
           Every each world heritage site's location is shown by Google map api
           on each specific pages.
+          <h3 className="text-lg font-semibold mt-2 underline underline-offset-4">
+            API's
+          </h3>
+          <p className="text-accentColor hover:text-secondaryColor">
+            <a
+              href="https://examples.opendatasoft.com/explore/dataset/world-heritage-unesco-list/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              https://examples.opendatasoft.com/explore/dataset/world-heritage-unesco-list/
+            </a>
+          </p>
+          <p className="text-accentColor hover:text-secondaryColor">
+            <a
+              href="https://unsplash.com/developers"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              https://unsplash.com/developers
+            </a>
+          </p>
+          <p className="text-accentColor hover:text-secondaryColor">
+            <a
+              href="https://developers.google.com/maps?hl=en"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              https://developers.google.com/maps?hl=en
+            </a>
+          </p>
         </p>
       </div>
     </>
